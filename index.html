@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paradise Sports Performance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #151515;
+      --white: #ffffff;
+      --gray-border: #e2e2e2;
+      --gray-footer-border: #444444;
+      --orange: #FD9A52;
+      --green: #279A4B;
+      --section-gap-mobile: 50px;
+      --section-gap-desktop: 90px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Archivo Narrow', sans-serif;
+      font-weight: 400;
+      color: var(--black);
+      background: var(--white);
+      line-height: 1.5;
+      font-size: 16px;
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; }
+
+    /* ─── ANNOUNCEMENT BAR ─── */
+    .announcement-bar {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .announcement-bar a { color: var(--white); text-decoration: underline; }
+
+    /* ─── HEADER ─── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-border);
+    }
+    .header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo {
+      font-size: 18px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .logo span { color: var(--orange); }
+    nav { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; justify-content: center; }
+    nav a {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 8px 10px;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    nav a:hover { opacity: 0.6; }
+    .header-actions { display: flex; gap: 8px; flex-shrink: 0; }
+    .header-actions a {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 8px 14px;
+      background: var(--black);
+      color: var(--white);
+      transition: opacity 0.2s;
+    }
+    .header-actions a:hover { opacity: 0.8; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; padding: 8px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--black); transition: all 0.3s; }
+
+    /* ─── MOBILE NAV ─── */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--white);
+      z-index: 2000;
+      padding: 80px 24px 40px;
+      flex-direction: column;
+      gap: 8px;
+      overflow-y: auto;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-size: 18px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--gray-border);
+    }
+    .mobile-nav-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      background: none;
+      border: none;
+      font-size: 32px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      height: 90vh;
+      min-height: 500px;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      opacity: 0.45;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: var(--white);
+      padding: 24px;
+    }
+    .hero-eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      opacity: 0.85;
+    }
+    .hero-title {
+      font-size: clamp(38px, 7vw, 80px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .hero-title span { color: var(--orange); }
+    .hero-subtitle {
+      font-size: clamp(14px, 2vw, 18px);
+      font-weight: 400;
+      margin-bottom: 36px;
+      opacity: 0.85;
+      letter-spacing: 0.03em;
+    }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+    .btn {
+      display: inline-block;
+      padding: 16px 32px;
+      font-family: 'Archivo Narrow', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border: 2px solid var(--white);
+      color: var(--white);
+      background: transparent;
+      transition: background 0.2s, color 0.2s;
+      cursor: pointer;
+    }
+    .btn:hover { background: var(--white); color: var(--black); }
+    .btn-solid {
+      background: var(--white);
+      color: var(--black);
+      border-color: var(--white);
+    }
+    .btn-solid:hover { background: transparent; color: var(--white); }
+    .btn-dark {
+      background: var(--black);
+      color: var(--white);
+      border-color: var(--black);
+    }
+    .btn-dark:hover { background: transparent; color: var(--black); }
+    .btn-orange {
+      background: var(--orange);
+      color: var(--white);
+      border-color: var(--orange);
+    }
+    .btn-orange:hover { background: transparent; color: var(--orange); }
+
+    /* ─── SECTION WRAPPERS ─── */
+    .section { padding: var(--section-gap-mobile) 24px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-dark { background: var(--black); color: var(--white); }
+    .section-gray { background: #f5f5f5; }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      opacity: 0.6;
+      margin-bottom: 10px;
+    }
+    .section-heading {
+      font-size: clamp(28px, 4vw, 46px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 16px;
+      opacity: 0.75;
+      max-width: 560px;
+      margin-bottom: 40px;
+    }
+
+    /* ─── PULL QUOTE / TESTIMONIAL BANNER ─── */
+    .quote-banner {
+      position: relative;
+      height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--black);
+    }
+    .quote-banner-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+    }
+    .quote-banner-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: var(--white);
+      padding: 40px 24px;
+      max-width: 780px;
+    }
+    .quote-icon {
+      font-size: 80px;
+      line-height: 0.6;
+      opacity: 0.4;
+      margin-bottom: 20px;
+      font-family: Georgia, serif;
+    }
+    .quote-text {
+      font-size: clamp(18px, 3vw, 26px);
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+    .quote-author {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.7;
+    }
+    .quote-cta { margin-top: 28px; }
+
+    /* ─── SERVICE CARDS ─── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .service-card {
+      border: 1px solid var(--gray-border);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-card-img {
+      aspect-ratio: 1;
+      object-fit: cover;
+      width: 100%;
+      background: #ddd;
+      transition: transform 0.4s;
+    }
+    .service-card:hover .service-card-img { transform: scale(1.04); }
+    .service-card-img-wrap { overflow: hidden; }
+    .service-card-body {
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 12px;
+    }
+    .service-card-title {
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .service-card-body .btn { align-self: flex-start; font-size: 12px; padding: 10px 20px; }
+
+    /* ─── PRODUCT / 7V7 ─── */
+    .product-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .product-images { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .product-img { aspect-ratio: 1; object-fit: cover; width: 100%; border: 1px solid var(--gray-border); }
+    .product-img.featured { grid-column: span 3; }
+    .product-info { display: flex; flex-direction: column; gap: 20px; }
+    .product-tag {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+    }
+    .product-title {
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+    }
+    .product-note { font-size: 14px; opacity: 0.65; }
+    .product-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* ─── STAFF ─── */
+    .staff-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+    }
+    .staff-card { text-align: center; }
+    .staff-img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      object-position: top;
+      margin-bottom: 16px;
+      background: #ddd;
+      filter: grayscale(20%);
+      transition: filter 0.3s;
+    }
+    .staff-card:hover .staff-img { filter: grayscale(0%); }
+    .staff-name {
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+    .staff-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--orange);
+      margin-bottom: 4px;
+    }
+    .staff-edu {
+      font-size: 12px;
+      opacity: 0.65;
+      margin-bottom: 12px;
+    }
+    .staff-card a { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; text-decoration: underline; }
+
+    /* ─── TEXT TESTIMONIALS ─── */
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .review-card {
+      border-top: 3px solid var(--orange);
+      padding-top: 24px;
+    }
+    .stars { color: var(--orange); font-size: 18px; margin-bottom: 12px; }
+    .review-text { font-size: 15px; line-height: 1.7; margin-bottom: 16px; font-style: italic; }
+    .review-author { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* ─── MERCH ─── */
+    .merch-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .merch-img { width: 100%; max-width: 480px; margin: 0 auto; border: 1px solid var(--gray-border); }
+    .merch-info { display: flex; flex-direction: column; gap: 16px; }
+    .merch-price { font-size: 28px; font-weight: 700; }
+
+    /* ─── ASSESSMENT CTA ─── */
+    .assessment-section {
+      background: var(--black);
+      color: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .assessment-img { object-fit: cover; width: 100%; height: 100%; min-height: 400px; }
+    .assessment-content { padding: 60px 48px; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+    .assessment-content .section-heading { margin-bottom: 0; }
+    .assessment-content p { opacity: 0.8; font-size: 16px; }
+    .assessment-buttons { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; margin-top: 8px; }
+
+    /* ─── FACILITY SHOWCASE ─── */
+    .facility-hero {
+      position: relative;
+      height: 520px;
+      overflow: hidden;
+      background: var(--black);
+    }
+    .facility-bg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.5;
+    }
+    .facility-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      color: var(--white);
+      padding: 24px;
+    }
+    .facility-overlay .section-heading { color: var(--white); margin-bottom: 12px; }
+    .facility-tagline {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--orange);
+      margin-bottom: 20px;
+    }
+    .facility-desc { font-size: 16px; max-width: 680px; opacity: 0.85; line-height: 1.7; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 60px 24px 32px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--gray-footer-border);
+      margin-bottom: 32px;
+    }
+    .footer-brand .logo { font-size: 16px; margin-bottom: 14px; }
+    .footer-brand p { font-size: 14px; opacity: 0.7; line-height: 1.7; margin-bottom: 14px; }
+    .footer-address { font-size: 13px; opacity: 0.65; line-height: 1.7; }
+    .footer-col h4 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+      opacity: 0.9;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a { font-size: 13px; opacity: 0.7; transition: opacity 0.2s; }
+    .footer-col ul li a:hover { opacity: 1; }
+    .newsletter-form { display: flex; flex-direction: column; gap: 10px; }
+    .newsletter-form input {
+      background: transparent;
+      border: 1px solid var(--gray-footer-border);
+      color: var(--white);
+      padding: 12px 16px;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+    }
+    .newsletter-form input::placeholder { opacity: 0.5; }
+    .newsletter-form input:focus { border-color: var(--white); }
+    .newsletter-form button {
+      background: var(--white);
+      color: var(--black);
+      border: none;
+      padding: 12px 20px;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: opacity 0.2s;
+    }
+    .newsletter-form button:hover { opacity: 0.85; }
+    .social-links { display: flex; gap: 16px; margin-top: 8px; }
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--gray-footer-border);
+      font-size: 16px;
+      opacity: 0.7;
+      transition: opacity 0.2s, border-color 0.2s;
+    }
+    .social-links a:hover { opacity: 1; border-color: var(--white); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 12px;
+      opacity: 0.55;
+    }
+
+    /* ─── DIVIDERS ─── */
+    .divider { height: 1px; background: var(--gray-border); margin: 0 24px; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1100px) {
+      .staff-grid { grid-template-columns: repeat(3, 1fr); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 900px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
+      .product-section { grid-template-columns: 1fr; }
+      .merch-section { grid-template-columns: 1fr; text-align: center; }
+      .merch-section .btn { align-self: center; }
+      .assessment-section { grid-template-columns: 1fr; }
+      .assessment-img { min-height: 280px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .header-actions { display: none; }
+    }
+    @media (max-width: 640px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .staff-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .product-images { grid-template-columns: 1fr 1fr; }
+      .product-img.featured { grid-column: span 2; }
+    }
+
+    /* ─── SCROLL ANIMATIONS ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── MISC ─── */
+    .text-center { text-align: center; }
+    .text-orange { color: var(--orange); }
+    .mt-8 { margin-top: 8px; }
+    .mt-16 { margin-top: 16px; }
+    .mb-40 { margin-bottom: 40px; }
+  </style>
+</head>
+<body>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar">
+    Now accepting new athletes — <a href="#assessment">Take Your Free Assessment Today</a>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <div class="logo">Paradise <span>Sports</span> Performance</div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#staff">Staff</a>
+        <a href="#7v7">7V7</a>
+        <a href="#merch">Apparel</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <a href="#assessment">Free Assessment</a>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" id="mobileNavClose">&times;</button>
+    <a href="#home" class="mobile-link">Home</a>
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="#testimonials" class="mobile-link">Testimonials</a>
+    <a href="#staff" class="mobile-link">Staff</a>
+    <a href="#7v7" class="mobile-link">7V7</a>
+    <a href="#merch" class="mobile-link">Apparel</a>
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+    <a href="#assessment" class="mobile-link" style="color:var(--orange);">Free Assessment</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <img class="hero-bg" src="IMG_6770_814x_crop_center.webp" alt="Paradise Sports Performance Facility" />
+    <div class="hero-content fade-up">
+      <p class="hero-eyebrow">North East Ohio's #1 Training Facility</p>
+      <h1 class="hero-title">Paradise <span>Sports</span><br>Performance</h1>
+      <p class="hero-subtitle">Elite Athlete Development &bull; Speed &bull; Agility &bull; Power</p>
+      <div class="hero-buttons">
+        <a class="btn btn-solid" href="#assessment">Take Assessment &rsaquo;</a>
+        <a class="btn" href="#assessment">Take Assessment (WV) &rsaquo;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="section-inner">
+      <p class="section-label">Training Programs</p>
+      <h2 class="section-heading">What We Offer</h2>
+      <p class="section-sub">Tailored training programs for athletes of every level — from youth development to adult fitness.</p>
+      <div class="services-grid">
+        <div class="service-card fade-up">
+          <div class="service-card-img-wrap">
+            <img class="service-card-img" src="ParadiseElite7v7skillsworkout18u_596x596_crop_center.webp" alt="Athlete Training Ohio" />
+          </div>
+          <div class="service-card-body">
+            <h3 class="service-card-title">Athlete Training<br>Ohio</h3>
+            <a class="btn btn-dark" href="#assessment">Schedule Now</a>
+          </div>
+        </div>
+        <div class="service-card fade-up" style="transition-delay:0.1s">
+          <div class="service-card-img-wrap">
+            <img class="service-card-img" src="WFC_logo_960x960_crop_center.webp" alt="Athlete Training West Virginia" />
+          </div>
+          <div class="service-card-body">
+            <h3 class="service-card-title">Athlete Training<br>West Virginia</h3>
+            <a class="btn btn-dark" href="#assessment">Schedule Now</a>
+          </div>
+        </div>
+        <div class="service-card fade-up" style="transition-delay:0.2s">
+          <div class="service-card-img-wrap">
+            <img class="service-card-img" src="Shane_Robinson_407x_crop_center.webp" alt="Adult Fitness with Coach Shane" />
+          </div>
+          <div class="service-card-body">
+            <h3 class="service-card-title">Adult Fitness<br>With Coach Shane</h3>
+            <a class="btn btn-dark" href="#assessment">Schedule Now</a>
+          </div>
+        </div>
+        <div class="service-card fade-up" style="transition-delay:0.3s">
+          <div class="service-card-img-wrap">
+            <img class="service-card-img" src="ParadiseElite7v7skillsworkout14u_596x596_crop_center.webp" alt="Skills Training with Christian DiLauro" />
+          </div>
+          <div class="service-card-body">
+            <h3 class="service-card-title">Skills Training<br>With Christian DiLauro</h3>
+            <a class="btn btn-dark" href="#assessment">Schedule Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL BANNER 1 -->
+  <div class="quote-banner" id="testimonials">
+    <img class="quote-banner-bg" src="IMG_6770_814x_crop_center.webp" alt="" />
+    <div class="quote-banner-content">
+      <div class="quote-icon">&ldquo;</div>
+      <p class="quote-text">I can tell you're the right guy. I already know I'm gonna improve so much just from working with you, and it hasn't even been a month yet.</p>
+      <p class="quote-author">— Paradise Athlete</p>
+      <div class="quote-cta"><a class="btn" href="#assessment">Explore &rsaquo;</a></div>
+    </div>
+  </div>
+
+  <!-- STAFF -->
+  <section class="section section-gray" id="staff">
+    <div class="section-inner">
+      <p class="section-label text-center">Our Team</p>
+      <h2 class="section-heading text-center">STAFF</h2>
+      <p class="section-sub text-center" style="margin:0 auto 48px;">Meet our team of experienced athletes and certified coaches.</p>
+      <div class="staff-grid">
+        <div class="staff-card fade-up">
+          <img class="staff-img" src="Brendan_Sadler_hs.webp" alt="Brendon Sadler" />
+          <p class="staff-name">Brendon Sadler</p>
+          <p class="staff-title">Owner &bull; CEO</p>
+          <p class="staff-edu">West Liberty University<br>Exercise Physiology</p>
+          <a href="#contact">Learn More</a>
+        </div>
+        <div class="staff-card fade-up" style="transition-delay:0.1s">
+          <img class="staff-img" src="Anthony_Young_hs_407x_crop_center.webp" alt="Anthony Young" />
+          <p class="staff-name">Anthony Young</p>
+          <p class="staff-title">Head Strength Coach &bull; Manager</p>
+          <p class="staff-edu">Akron University<br>Exercise Science</p>
+          <a href="#contact">Learn More</a>
+        </div>
+        <div class="staff-card fade-up" style="transition-delay:0.2s">
+          <img class="staff-img" src="IMG_6770_814x_crop_center.webp" alt="Blake Gammill" style="object-position:center;" />
+          <p class="staff-name">Blake Gammill</p>
+          <p class="staff-title">Head Strength Coach &bull; West Virginia</p>
+          <p class="staff-edu">Liberty University<br>Exercise Science</p>
+          <a href="#contact">Learn More</a>
+        </div>
+        <div class="staff-card fade-up" style="transition-delay:0.3s">
+          <img class="staff-img" src="Shane_Robinson_407x_crop_center.webp" alt="Shane Robinson" />
+          <p class="staff-name">Shane Robinson</p>
+          <p class="staff-title">Head Adult Trainer &bull; Assistant Coach</p>
+          <p class="staff-edu">Kent State University<br>Sports Medicine</p>
+          <a href="#contact">Learn More</a>
+        </div>
+        <div class="staff-card fade-up" style="transition-delay:0.4s">
+          <img class="staff-img" src="Ashley_Stumperth_hs_814x_crop_center.webp" alt="Ashley Stumperth" />
+          <p class="staff-name">Ashley Stumperth</p>
+          <p class="staff-title">Assistant Strength Coach &bull; Team Trainer</p>
+          <p class="staff-edu">Mount Vernon University<br>Exercise Science / Sports Management</p>
+          <a href="#contact">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL BANNER 2 -->
+  <div class="quote-banner">
+    <img class="quote-banner-bg" src="ParadiseElite7v7skillsworkout18u_596x596_crop_center.webp" alt="" />
+    <div class="quote-banner-content">
+      <div class="quote-icon">&ldquo;</div>
+      <p class="quote-text">Your role is bigger than you know. My son feels such a bond and wants to do it for himself — but I know he wants to make us all proud, and that includes you.</p>
+      <p class="quote-author">— Paradise Parent</p>
+    </div>
+  </div>
+
+  <!-- 7V7 PRODUCT -->
+  <section class="section" id="7v7">
+    <div class="section-inner">
+      <div class="product-section">
+        <div>
+          <div class="product-images">
+            <img class="product-img featured" src="ParadiseElite7v7skillsworkout18u_596x596_crop_center.webp" alt="Paradise Elite 7V7 18u" />
+            <img class="product-img" src="ParadiseElite7v7skillsworkout12u_27d2a329-d361-4215-a416-86b6e7d73e98_596x596_crop_center.webp" alt="Paradise Elite 7V7 12u" />
+            <img class="product-img" src="ParadiseElite7v7skillsworkout14u_596x596_crop_center.webp" alt="Paradise Elite 7V7 14u" />
+            <img class="product-img" src="ParadiseElite7v7skillsworkout18u_596x596_crop_center.webp" alt="Paradise Elite 7V7 Skills" />
+          </div>
+        </div>
+        <div class="product-info fade-up">
+          <p class="product-tag">Featured Program</p>
+          <h2 class="product-title">Paradise Elite 7V7<br>Skills Workout</h2>
+          <p style="font-size:15px;line-height:1.7;opacity:0.75;">Join our elite 7V7 skills training program for athletes 18U and under. Develop your football IQ, route running, coverage skills, and overall athleticism with our experienced coaching staff.</p>
+          <p class="product-tag" style="font-size:14px;">Age Groups: 12U &bull; 14U &bull; 18U</p>
+          <div class="product-actions">
+            <a class="btn btn-dark" href="#assessment">Contact for Pricing</a>
+            <a class="btn btn-orange" href="#assessment">Register Interest</a>
+          </div>
+          <p class="product-note">Contact us for session details and pricing. Recurring programs available.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEXT TESTIMONIALS -->
+  <section class="section section-dark">
+    <div class="section-inner">
+      <p class="section-label text-center" style="color:var(--white);">Paradise Sports Clients</p>
+      <h2 class="section-heading text-center" style="color:var(--white);margin-bottom:48px;">What Our Athletes Say</h2>
+      <div class="reviews-grid">
+        <div class="review-card fade-up">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text" style="color:rgba(255,255,255,0.85);">"When identifying a single phrase to describe my experience with Coach Sadler, I would have to say 'life changing.' He doesn't just train your body — he trains your mindset."</p>
+          <p class="review-author" style="color:var(--orange);">Brandon McKinley &mdash; OG Athletics</p>
+        </div>
+        <div class="review-card fade-up" style="transition-delay:0.15s">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text" style="color:rgba(255,255,255,0.85);">"I already knew but it hit harder when my trainer said, 'Always BET on YOURSELF.' I got the best trainer you could ask for, man. He pushes you to your limit every single time."</p>
+          <p class="review-author" style="color:var(--orange);">JaShaun Whitman &mdash; Athlete</p>
+        </div>
+        <div class="review-card fade-up" style="transition-delay:0.3s">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text" style="color:rgba(255,255,255,0.85);">"Best facility in NEOH!!! Link with @coachsads. He's the best trainer out here!! Not only will you get the physical aspect, but the mental conditioning as well!! Truly a king in his field!"</p>
+          <p class="review-author" style="color:var(--orange);">Jasmynn Slim Mitchell &mdash; Athlete</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL BANNER 3 -->
+  <div class="quote-banner">
+    <img class="quote-banner-bg" src="IMG_6770_814x_crop_center.webp" alt="" />
+    <div class="quote-banner-content">
+      <div class="quote-icon">&ldquo;</div>
+      <p class="quote-text">You're an easy person to get comfortable around. I'm already comfortable around you and I just met you — literally like a month ago.</p>
+      <p class="quote-author">— Paradise Athlete</p>
+    </div>
+  </div>
+
+  <!-- MERCHANDISE -->
+  <section class="section" id="merch">
+    <div class="section-inner">
+      <div class="merch-section">
+        <img class="merch-img fade-up" src="Paradise_Sports_T-shirt_Front_White_821x821_crop_center.webp" alt="Paradise Sports Performance T-Shirt" />
+        <div class="merch-info fade-up">
+          <p class="product-tag">Premium Apparel</p>
+          <h2 class="section-heading">Premium Quality Apparel<br>By: PSP</h2>
+          <h3 style="font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;">Paradise Sports Performance T-Shirt</h3>
+          <p class="merch-price">$20.00</p>
+          <p style="font-size:15px;opacity:0.7;">Rep the brand. Contact us to get yours today and show your Paradise Sports Performance pride.</p>
+          <a class="btn btn-dark" href="#contact">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASSESSMENT CTA -->
+  <div class="assessment-section" id="assessment">
+    <img class="assessment-img" src="IMG_6770_814x_crop_center.webp" alt="Assessment" />
+    <div class="assessment-content">
+      <p class="section-label" style="color:var(--orange);">No Cost, No Commitment</p>
+      <h2 class="section-heading" style="color:var(--white);">Get a Free Assessment</h2>
+      <p>Fill out our online form to submit your assessment. Tell us about your goals — Foot Work, Speed, Agility, Power — and we'll put together a plan for you.</p>
+      <div class="assessment-buttons">
+        <a class="btn btn-solid" href="mailto:paradisesportsperformance0@gmail.com">Take Assessment (Ohio) &rsaquo;</a>
+        <a class="btn" href="mailto:coachgammill7@gmail.com">Take Assessment (West Virginia) &rsaquo;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FACILITY SHOWCASE -->
+  <div class="facility-hero" id="about">
+    <img class="facility-bg" src="IMG_6770_814x_crop_center.webp" alt="Paradise Sports Performance Facility" />
+    <div class="facility-overlay">
+      <p class="facility-tagline">Best Facility in North East Ohio</p>
+      <h2 class="section-heading" style="color:var(--white);">Paradise Sports Performance</h2>
+      <p class="facility-desc">Get in the game at Paradise Sports Performance — the unbeatable North East Ohio training facility with state-of-the-art amenities, top coaches, and an inspiring atmosphere for athletes of all levels.</p>
+      <a class="btn mt-16" href="#assessment" style="margin-top:28px;">Take Assessment &rsaquo;</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <div class="logo">Paradise <span style="color:var(--orange)">Sports</span> Performance</div>
+          <p>Elite athletic development in North East Ohio and West Virginia. We train the whole athlete — body and mind.</p>
+          <p class="footer-address">
+            2470 Bailey Rd.<br>
+            Cuyahoga Falls, OH 44221, Suite B<br><br>
+            <a href="mailto:paradisesportsperformance0@gmail.com">paradisesportsperformance0@gmail.com</a>
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#staff">About Us</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Training -->
+        <div class="footer-col">
+          <h4>Training</h4>
+          <ul>
+            <li><a href="#assessment">Athlete Training – OH</a></li>
+            <li><a href="#assessment">Athlete Training – WV</a></li>
+            <li><a href="#assessment">Adult Fitness</a></li>
+            <li><a href="#7v7">Skills Training</a></li>
+            <li><a href="#7v7">7V7 Program</a></li>
+            <li><a href="#assessment">Free Assessment</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <p style="font-size:13px;opacity:0.65;margin-bottom:14px;">Subscribe to hear about the latest deals and promotions.</p>
+          <form class="newsletter-form" onsubmit="return handleNewsletter(event)">
+            <input type="email" placeholder="Your email address" required />
+            <button type="submit">Subscribe</button>
+          </form>
+          <h4 style="margin-top:24px;">Follow Us</h4>
+          <div class="social-links">
+            <a href="https://www.instagram.com/paradisesportsperformance/" target="_blank" rel="noopener" title="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@paradisesportsperformance" target="_blank" rel="noopener" title="YouTube">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42A2.78 2.78 0 0 0 20.6 4.46C18.88 4 12 4 12 4s-6.88 0-8.6.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.4 19.54C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" stroke="none" fill="currentColor"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Paradise Sports Performance. All rights reserved.</p>
+        <p>Cuyahoga Falls, OH &bull; Weirton, WV</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileNavClose = document.getElementById('mobileNavClose');
+
+    hamburgerBtn.addEventListener('click', () => mobileNav.classList.add('open'));
+    mobileNavClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileNav.classList.remove('open'));
+    });
+
+    // Newsletter form
+    function handleNewsletter(e) {
+      e.preventDefault();
+      const input = e.target.querySelector('input');
+      alert('Thank you for subscribing! We\'ll keep you updated on the latest deals and promotions.');
+      input.value = '';
+      return false;
+    }
+
+    // Scroll-triggered fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
