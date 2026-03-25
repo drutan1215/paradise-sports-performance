@@ -461,18 +461,6 @@
     .review-author { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
 
 
-    /* ─── ASSESSMENT CTA ─── */
-    .assessment-section {
-      background: var(--black);
-      color: var(--white);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-    .assessment-img { object-fit: cover; width: 100%; height: 100%; min-height: 400px; }
-    .assessment-content { padding: 60px 48px; display: flex; flex-direction: column; justify-content: center; gap: 20px; }
-    .assessment-content .section-heading { margin-bottom: 0; }
-    .assessment-content p { opacity: 0.8; font-size: 16px; }
-    .assessment-buttons { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; margin-top: 8px; }
 
     /* ─── FACILITY SHOWCASE ─── */
     .facility-hero {
@@ -601,8 +589,6 @@
       nav { display: none; }
       .hamburger { display: flex; }
       .product-section { grid-template-columns: 1fr; }
-      .assessment-section { grid-template-columns: 1fr; }
-      .assessment-img { min-height: 280px; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .reviews-grid { grid-template-columns: 1fr; }
       .header-actions { display: none; }
@@ -649,7 +635,7 @@
 
   <!-- ANNOUNCEMENT BAR -->
   <div class="announcement-bar">
-    Now accepting new athletes — <a href="#assessment">Take Your Free Assessment Today</a>
+    Now accepting new athletes — <a href="#contact-us">Take Your Free Assessment Today</a>
   </div>
 
   <!-- HEADER -->
@@ -672,7 +658,7 @@
         <a href="#about">About Us</a>
       </nav>
       <div class="header-actions">
-        <a href="#assessment">Free Assessment</a>
+        <a href="#contact-us">Free Assessment</a>
       </div>
       <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
         <span></span><span></span><span></span>
@@ -704,8 +690,8 @@
       <h1 class="hero-title">Paradise <span>Sports</span><br>Performance</h1>
       <p class="hero-subtitle">Elite Athlete Development &bull; Speed &bull; Agility &bull; Power</p>
       <div class="hero-buttons">
-        <a class="btn btn-solid" href="#assessment">Take Assessment &rsaquo;</a>
-        <a class="btn" href="#assessment">Take Assessment (WV) &rsaquo;</a>
+        <a class="btn btn-solid" href="#contact-us">Take Assessment &rsaquo;</a>
+        <a class="btn" href="#contact-us">Take Assessment (WV) &rsaquo;</a>
       </div>
     </div>
   </section>
@@ -723,7 +709,7 @@
           </div>
           <div class="service-card-body">
             <h3 class="service-card-title">Athlete Training<br>Ohio</h3>
-            <a class="btn btn-dark" href="#assessment">Schedule Now</a>
+            <a class="btn btn-dark" href="#contact-us">Schedule Now</a>
           </div>
         </div>
         <div class="service-card fade-up" id="services-wv" style="transition-delay:0.1s">
@@ -732,7 +718,7 @@
           </div>
           <div class="service-card-body">
             <h3 class="service-card-title">Athlete Training<br>West Virginia</h3>
-            <a class="btn btn-dark" href="#assessment">Schedule Now</a>
+            <a class="btn btn-dark" href="#contact-us">Schedule Now</a>
           </div>
         </div>
         <div class="service-card fade-up" style="transition-delay:0.2s">
@@ -741,7 +727,7 @@
           </div>
           <div class="service-card-body">
             <h3 class="service-card-title">Adult Fitness<br>With Coach Shane</h3>
-            <a class="btn btn-dark" href="#assessment">Schedule Now</a>
+            <a class="btn btn-dark" href="#contact-us">Schedule Now</a>
           </div>
         </div>
         <div class="service-card fade-up" style="transition-delay:0.3s">
@@ -750,7 +736,7 @@
           </div>
           <div class="service-card-body">
             <h3 class="service-card-title">Skills Training<br>With Christian DiLauro</h3>
-            <a class="btn btn-dark" href="#assessment">Schedule Now</a>
+            <a class="btn btn-dark" href="#contact-us">Schedule Now</a>
           </div>
         </div>
       </div>
@@ -764,7 +750,7 @@
       <div class="quote-icon">&ldquo;</div>
       <p class="quote-text">I can tell you're the right guy. I already know I'm gonna improve so much just from working with you, and it hasn't even been a month yet.</p>
       <p class="quote-author">— Paradise Athlete</p>
-      <div class="quote-cta"><a class="btn" href="#assessment">Explore &rsaquo;</a></div>
+      <div class="quote-cta"><a class="btn" href="#contact-us">Explore &rsaquo;</a></div>
     </div>
   </div>
 
@@ -842,7 +828,7 @@
           <p style="font-size:15px;line-height:1.7;opacity:0.75;">Join our elite 7V7 skills training program for athletes 18U and under. Develop your football IQ, route running, coverage skills, and overall athleticism with our experienced coaching staff.</p>
           <p class="product-tag" style="font-size:14px;">Age Groups: 12U &bull; 14U &bull; 18U</p>
           <div class="product-actions">
-            <a class="btn btn-dark" href="#assessment">Contact for Pricing</a>
+            <a class="btn btn-dark" href="#contact-us">Contact for Pricing</a>
           </div>
           <p class="product-note">Contact us for session details and pricing. Recurring programs available.</p>
         </div>
@@ -896,19 +882,6 @@
     </div>
   </section>
 
-  <!-- ASSESSMENT CTA -->
-  <div class="assessment-section" id="assessment">
-    <img class="assessment-img" src="basketball court.jpg" alt="Assessment" />
-    <div class="assessment-content">
-      <p class="section-label" style="color:var(--gold);">No Cost, No Commitment</p>
-      <h2 class="section-heading" style="color:var(--white);">Get a Free Assessment</h2>
-      <p>Fill out our online form to submit your assessment. Tell us about your goals — Foot Work, Speed, Agility, Power — and we'll put together a plan for you.</p>
-      <div class="assessment-buttons">
-        <a class="btn btn-solid" href="mailto:paradisesportsperformance0@gmail.com">Take Assessment (Ohio) &rsaquo;</a>
-        <a class="btn" href="mailto:coachgammill7@gmail.com">Take Assessment (West Virginia) &rsaquo;</a>
-      </div>
-    </div>
-  </div>
 
   <!-- FACILITY SHOWCASE -->
   <div class="facility-hero" id="about">
@@ -917,7 +890,7 @@
       <p class="facility-tagline">Best Facility in North East Ohio</p>
       <h2 class="section-heading" style="color:var(--white);">Paradise Sports Performance</h2>
       <p class="facility-desc">Get in the game at Paradise Sports Performance — the unbeatable North East Ohio training facility with state-of-the-art amenities, top coaches, and an inspiring atmosphere for athletes of all levels.</p>
-      <a class="btn mt-16" href="#assessment" style="margin-top:28px;">Take Assessment &rsaquo;</a>
+      <a class="btn mt-16" href="#contact-us" style="margin-top:28px;">Take Assessment &rsaquo;</a>
     </div>
   </div>
 
@@ -967,12 +940,12 @@
         <div class="footer-col">
           <h4>Training</h4>
           <ul>
-            <li><a href="#assessment">Athlete Training – OH</a></li>
-            <li><a href="#assessment">Athlete Training – WV</a></li>
-            <li><a href="#assessment">Adult Fitness</a></li>
+            <li><a href="#contact-us">Athlete Training – OH</a></li>
+            <li><a href="#contact-us">Athlete Training – WV</a></li>
+            <li><a href="#contact-us">Adult Fitness</a></li>
             <li><a href="#7v7">Skills Training</a></li>
             <li><a href="#7v7">7V7 Program</a></li>
-            <li><a href="#assessment">Free Assessment</a></li>
+            <li><a href="#contact-us">Free Assessment</a></li>
           </ul>
         </div>
 
