@@ -11,12 +11,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black: #151515;
+      --black: rgb(23, 25, 24);
       --white: #ffffff;
-      --gray-border: #e2e2e2;
-      --gray-footer-border: #444444;
-      --orange: #FD9A52;
-      --green: #279A4B;
+      --deepskyblue: rgb(27, 181, 235);
+      --gold: rgb(242, 205, 14);
+      --skyblue: rgb(119, 202, 230);
+      --silver: rgb(192, 188, 185);
+      --darkgray: rgb(151, 157, 163);
+      --peru: rgb(188, 135, 74);
+      --brown: rgb(178, 62, 39);
       --section-gap-mobile: 50px;
       --section-gap-desktop: 90px;
     }
@@ -55,7 +58,7 @@
       top: 0;
       z-index: 1000;
       background: var(--white);
-      border-bottom: 1px solid var(--gray-border);
+      border-bottom: 1px solid var(--silver);
     }
     .header-inner {
       max-width: 1400px;
@@ -75,7 +78,7 @@
       white-space: nowrap;
       flex-shrink: 0;
     }
-    .logo span { color: var(--orange); }
+    .logo span { color: var(--gold); }
     nav { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; justify-content: center; }
     nav a {
       font-size: 13px;
@@ -94,7 +97,7 @@
       text-transform: uppercase;
       letter-spacing: 0.04em;
       padding: 8px 14px;
-      background: var(--black);
+      background: var(--deepskyblue);
       color: var(--white);
       transition: opacity 0.2s;
     }
@@ -121,7 +124,7 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       padding: 14px 0;
-      border-bottom: 1px solid var(--gray-border);
+      border-bottom: 1px solid var(--silver);
     }
     .mobile-nav-close {
       position: absolute;
@@ -176,7 +179,7 @@
       line-height: 1;
       margin-bottom: 12px;
     }
-    .hero-title span { color: var(--orange); }
+    .hero-title span { color: var(--deepskyblue); }
     .hero-subtitle {
       font-size: clamp(14px, 2vw, 18px);
       font-weight: 400;
@@ -212,18 +215,24 @@
       border-color: var(--black);
     }
     .btn-dark:hover { background: transparent; color: var(--black); }
-    .btn-orange {
-      background: var(--orange);
-      color: var(--white);
-      border-color: var(--orange);
+    .btn-gold {
+      background: var(--gold);
+      color: var(--black);
+      border-color: var(--gold);
     }
-    .btn-orange:hover { background: transparent; color: var(--orange); }
+    .btn-gold:hover { background: transparent; color: var(--gold); }
+    .btn-blue {
+      background: var(--deepskyblue);
+      color: var(--white);
+      border-color: var(--deepskyblue);
+    }
+    .btn-blue:hover { background: transparent; color: var(--deepskyblue); }
 
     /* ─── SECTION WRAPPERS ─── */
     .section { padding: var(--section-gap-mobile) 24px; }
     .section-inner { max-width: 1200px; margin: 0 auto; }
     .section-dark { background: var(--black); color: var(--white); }
-    .section-gray { background: #f5f5f5; }
+    .section-gray { background: rgba(192, 188, 185, 0.15); }
 
     .section-label {
       font-size: 12px;
@@ -304,7 +313,7 @@
       gap: 20px;
     }
     .service-card {
-      border: 1px solid var(--gray-border);
+      border: 1px solid var(--silver);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -336,7 +345,7 @@
     /* ─── PRODUCT / 7V7 ─── */
     .product-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
     .product-images { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-    .product-img { aspect-ratio: 1; object-fit: cover; width: 100%; border: 1px solid var(--gray-border); }
+    .product-img { aspect-ratio: 1; object-fit: cover; width: 100%; border: 1px solid var(--silver); }
     .product-img.featured { grid-column: span 3; }
     .product-info { display: flex; flex-direction: column; gap: 20px; }
     .product-tag {
@@ -344,7 +353,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: var(--orange);
+      color: var(--gold);
     }
     .product-title {
       font-size: clamp(22px, 3vw, 34px);
@@ -386,7 +395,7 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: var(--orange);
+      color: var(--skyblue);
       margin-bottom: 4px;
     }
     .staff-edu {
@@ -399,16 +408,16 @@
     /* ─── TEXT TESTIMONIALS ─── */
     .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
     .review-card {
-      border-top: 3px solid var(--orange);
+      border-top: 3px solid var(--deepskyblue);
       padding-top: 24px;
     }
-    .stars { color: var(--orange); font-size: 18px; margin-bottom: 12px; }
+    .stars { color: var(--gold); font-size: 18px; margin-bottom: 12px; }
     .review-text { font-size: 15px; line-height: 1.7; margin-bottom: 16px; font-style: italic; }
     .review-author { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
 
     /* ─── MERCH ─── */
     .merch-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-    .merch-img { width: 100%; max-width: 480px; margin: 0 auto; border: 1px solid var(--gray-border); }
+    .merch-img { width: 100%; max-width: 480px; margin: 0 auto; border: 1px solid var(--silver); }
     .merch-info { display: flex; flex-direction: column; gap: 16px; }
     .merch-price { font-size: 28px; font-weight: 700; }
 
@@ -455,7 +464,7 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: var(--orange);
+      color: var(--gold);
       margin-bottom: 20px;
     }
     .facility-desc { font-size: 16px; max-width: 680px; opacity: 0.85; line-height: 1.7; }
@@ -475,7 +484,7 @@
       grid-template-columns: 2fr 1fr 1fr 1.5fr;
       gap: 48px;
       padding-bottom: 48px;
-      border-bottom: 1px solid var(--gray-footer-border);
+      border-bottom: 1px solid var(--darkgray);
       margin-bottom: 32px;
     }
     .footer-brand .logo { font-size: 16px; margin-bottom: 14px; }
@@ -495,7 +504,7 @@
     .newsletter-form { display: flex; flex-direction: column; gap: 10px; }
     .newsletter-form input {
       background: transparent;
-      border: 1px solid var(--gray-footer-border);
+      border: 1px solid var(--darkgray);
       color: var(--white);
       padding: 12px 16px;
       font-family: inherit;
@@ -505,8 +514,8 @@
     .newsletter-form input::placeholder { opacity: 0.5; }
     .newsletter-form input:focus { border-color: var(--white); }
     .newsletter-form button {
-      background: var(--white);
-      color: var(--black);
+      background: var(--deepskyblue);
+      color: var(--white);
       border: none;
       padding: 12px 20px;
       font-family: inherit;
@@ -524,7 +533,7 @@
       justify-content: center;
       width: 38px;
       height: 38px;
-      border: 1px solid var(--gray-footer-border);
+      border: 1px solid var(--darkgray);
       font-size: 16px;
       opacity: 0.7;
       transition: opacity 0.2s, border-color 0.2s;
@@ -541,7 +550,7 @@
     }
 
     /* ─── DIVIDERS ─── */
-    .divider { height: 1px; background: var(--gray-border); margin: 0 24px; }
+    .divider { height: 1px; background: var(--silver); margin: 0 24px; }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 1100px) {
@@ -581,7 +590,8 @@
 
     /* ─── MISC ─── */
     .text-center { text-align: center; }
-    .text-orange { color: var(--orange); }
+    .text-gold { color: var(--gold); }
+    .text-blue { color: var(--deepskyblue); }
     .mt-8 { margin-top: 8px; }
     .mt-16 { margin-top: 16px; }
     .mb-40 { margin-bottom: 40px; }
@@ -638,7 +648,7 @@
     <a href="#merch" class="mobile-link">Apparel</a>
     <a href="#about" class="mobile-link">About</a>
     <a href="#contact" class="mobile-link">Contact</a>
-    <a href="#assessment" class="mobile-link" style="color:var(--orange);">Free Assessment</a>
+    <a href="#assessment" class="mobile-link" style="color:var(--gold);">Free Assessment</a>
   </div>
 
   <!-- HERO -->
@@ -788,7 +798,7 @@
           <p class="product-tag" style="font-size:14px;">Age Groups: 12U &bull; 14U &bull; 18U</p>
           <div class="product-actions">
             <a class="btn btn-dark" href="#assessment">Contact for Pricing</a>
-            <a class="btn btn-orange" href="#assessment">Register Interest</a>
+            <a class="btn btn-gold" href="#assessment">Register Interest</a>
           </div>
           <p class="product-note">Contact us for session details and pricing. Recurring programs available.</p>
         </div>
@@ -805,17 +815,17 @@
         <div class="review-card fade-up">
           <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p class="review-text" style="color:rgba(255,255,255,0.85);">"When identifying a single phrase to describe my experience with Coach Sadler, I would have to say 'life changing.' He doesn't just train your body — he trains your mindset."</p>
-          <p class="review-author" style="color:var(--orange);">Brandon McKinley &mdash; OG Athletics</p>
+          <p class="review-author" style="color:var(--gold);">Brandon McKinley &mdash; OG Athletics</p>
         </div>
         <div class="review-card fade-up" style="transition-delay:0.15s">
           <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p class="review-text" style="color:rgba(255,255,255,0.85);">"I already knew but it hit harder when my trainer said, 'Always BET on YOURSELF.' I got the best trainer you could ask for, man. He pushes you to your limit every single time."</p>
-          <p class="review-author" style="color:var(--orange);">JaShaun Whitman &mdash; Athlete</p>
+          <p class="review-author" style="color:var(--gold);">JaShaun Whitman &mdash; Athlete</p>
         </div>
         <div class="review-card fade-up" style="transition-delay:0.3s">
           <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p class="review-text" style="color:rgba(255,255,255,0.85);">"Best facility in NEOH!!! Link with @coachsads. He's the best trainer out here!! Not only will you get the physical aspect, but the mental conditioning as well!! Truly a king in his field!"</p>
-          <p class="review-author" style="color:var(--orange);">Jasmynn Slim Mitchell &mdash; Athlete</p>
+          <p class="review-author" style="color:var(--gold);">Jasmynn Slim Mitchell &mdash; Athlete</p>
         </div>
       </div>
     </div>
@@ -852,7 +862,7 @@
   <div class="assessment-section" id="assessment">
     <img class="assessment-img" src="basketball court.jpg" alt="Assessment" />
     <div class="assessment-content">
-      <p class="section-label" style="color:var(--orange);">No Cost, No Commitment</p>
+      <p class="section-label" style="color:var(--gold);">No Cost, No Commitment</p>
       <h2 class="section-heading" style="color:var(--white);">Get a Free Assessment</h2>
       <p>Fill out our online form to submit your assessment. Tell us about your goals — Foot Work, Speed, Agility, Power — and we'll put together a plan for you.</p>
       <div class="assessment-buttons">
@@ -879,7 +889,7 @@
       <div class="footer-grid">
         <!-- Brand -->
         <div class="footer-brand">
-          <div class="logo">Paradise <span style="color:var(--orange)">Sports</span> Performance</div>
+          <div class="logo">Paradise <span style="color:var(--gold)">Sports</span> Performance</div>
           <p>Elite athletic development in North East Ohio and West Virginia. We train the whole athlete — body and mind.</p>
           <p class="footer-address">
             2470 Bailey Rd.<br>
