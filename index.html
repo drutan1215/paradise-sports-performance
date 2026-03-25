@@ -91,6 +91,36 @@
       transition: opacity 0.2s;
     }
     nav a:hover { opacity: 0.6; }
+
+    /* ─── NAV DROPDOWN ─── */
+    .nav-item { position: relative; }
+    .nav-item > a { display: flex; align-items: center; gap: 3px; }
+    .nav-item > a::after { content: '▾'; font-size: 9px; opacity: 0.7; }
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 1px);
+      left: 0;
+      background: var(--white);
+      border: 1px solid var(--silver);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      min-width: 190px;
+      z-index: 500;
+      flex-direction: column;
+    }
+    .nav-item:hover .dropdown { display: flex; }
+    .dropdown a {
+      padding: 11px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid var(--silver);
+      white-space: nowrap;
+      opacity: 1;
+    }
+    .dropdown a:last-child { border-bottom: none; }
+    .dropdown a:hover { background: rgba(27,181,235,0.08); color: var(--deepskyblue); opacity: 1; }
     .header-actions { display: flex; gap: 8px; flex-shrink: 0; }
     .header-actions a {
       font-size: 12px;
@@ -127,6 +157,22 @@
       padding: 14px 0;
       border-bottom: 1px solid var(--silver);
     }
+    .mobile-nav-sub {
+      padding: 8px 0 8px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-bottom: 1px solid var(--silver);
+    }
+    .mobile-nav-sub a {
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      padding: 10px 0;
+      border-bottom: none;
+      color: var(--deepskyblue);
+      opacity: 1;
+    }
+    .mobile-nav-sub a:last-child { border-bottom: none; }
     .mobile-nav-close {
       position: absolute;
       top: 20px;
@@ -620,14 +666,18 @@
     <div class="header-inner">
       <div class="logo">Paradise <span>Sports</span> Performance</div>
       <nav>
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
+        <div class="nav-item">
+          <a href="#services">Athlete Training</a>
+          <div class="dropdown">
+            <a href="#services-ohio">Ohio</a>
+            <a href="#services-wv">West Virginia</a>
+          </div>
+        </div>
         <a href="#testimonials">Testimonials</a>
-        <a href="#staff">Staff</a>
-        <a href="#7v7">7V7</a>
-        <a href="#merch">Apparel</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="#7v7">7on7 Skills Workout</a>
+        <a href="#online-programming">Online Programming</a>
+        <a href="#contact">Contact Us</a>
+        <a href="#about">About Us</a>
       </nav>
       <div class="header-actions">
         <a href="#assessment">Free Assessment</a>
@@ -641,15 +691,16 @@
   <!-- MOBILE NAV -->
   <div class="mobile-nav" id="mobileNav">
     <button class="mobile-nav-close" id="mobileNavClose">&times;</button>
-    <a href="#home" class="mobile-link">Home</a>
-    <a href="#services" class="mobile-link">Services</a>
+    <a href="#services" class="mobile-link">Athlete Training</a>
+    <div class="mobile-nav-sub">
+      <a href="#services-ohio" class="mobile-link">→ Ohio</a>
+      <a href="#services-wv" class="mobile-link">→ West Virginia</a>
+    </div>
     <a href="#testimonials" class="mobile-link">Testimonials</a>
-    <a href="#staff" class="mobile-link">Staff</a>
-    <a href="#7v7" class="mobile-link">7V7</a>
-    <a href="#merch" class="mobile-link">Apparel</a>
-    <a href="#about" class="mobile-link">About</a>
-    <a href="#contact" class="mobile-link">Contact</a>
-    <a href="#assessment" class="mobile-link" style="color:var(--gold);">Free Assessment</a>
+    <a href="#7v7" class="mobile-link">7on7 Skills Workout</a>
+    <a href="#online-programming" class="mobile-link">Online Programming</a>
+    <a href="#contact" class="mobile-link">Contact Us</a>
+    <a href="#about" class="mobile-link">About Us</a>
   </div>
 
   <!-- HERO -->
@@ -673,7 +724,7 @@
       <h2 class="section-heading">What We Offer</h2>
       <p class="section-sub">Tailored training programs for athletes of every level — from youth development to adult fitness.</p>
       <div class="services-grid">
-        <div class="service-card fade-up">
+        <div class="service-card fade-up" id="services-ohio">
           <div class="service-card-img-wrap">
             <img class="service-card-img" src="ParadiseElite7v7skillsworkout18u_596x596_crop_center.webp" alt="Athlete Training Ohio" />
           </div>
@@ -682,7 +733,7 @@
             <a class="btn btn-dark" href="#assessment">Schedule Now</a>
           </div>
         </div>
-        <div class="service-card fade-up" style="transition-delay:0.1s">
+        <div class="service-card fade-up" id="services-wv" style="transition-delay:0.1s">
           <div class="service-card-img-wrap">
             <img class="service-card-img" src="WFC_logo_960x960_crop_center.webp" alt="Athlete Training West Virginia" />
           </div>
@@ -856,6 +907,16 @@
           <a class="btn btn-dark" href="#contact">Contact Us</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ONLINE PROGRAMMING -->
+  <section class="section section-dark" id="online-programming">
+    <div class="section-inner text-center">
+      <p class="section-label">Train From Anywhere</p>
+      <h2 class="section-heading" style="margin-bottom:16px;">Online Programming</h2>
+      <p class="section-sub" style="margin:0 auto 36px;">Can't make it to the facility? We'll build a custom training program tailored to your goals — delivered straight to you, wherever you are.</p>
+      <a class="btn btn-blue" href="mailto:paradisesportsperformance0@gmail.com">Get Your Program &rsaquo;</a>
     </div>
   </section>
 
