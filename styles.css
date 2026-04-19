@@ -460,7 +460,7 @@ nav > a[aria-current="page"] { color: var(--deepskyblue); }
 /* ─── SERVICE CARDS ─── */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: rgba(255,255,255,0.06);
 }
