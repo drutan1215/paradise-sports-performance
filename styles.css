@@ -529,6 +529,11 @@ nav > a[aria-current="page"] { color: var(--deepskyblue); }
 }
 .training-info { display: flex; flex-direction: column; gap: 20px; }
 .training-info p { font-size: 16px; line-height: 1.8; opacity: 0.75; font-weight: 300; }
+.instagram-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
 
 /* ─── 7V7 / PRODUCT ─── */
 .product-section { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -856,6 +861,7 @@ footer {
   .product-section { grid-template-columns: 1fr; }
   .training-block { grid-template-columns: 1fr; gap: 32px; }
   .training-block.reverse { direction: ltr; }
+  .instagram-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .reviews-grid { grid-template-columns: 1fr; }
   .header-actions { display: none; }
