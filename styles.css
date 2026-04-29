@@ -550,6 +550,42 @@ nav > a[aria-current="page"] { color: var(--deepskyblue); }
   grid-template-columns: 1fr 1fr;
   gap: 24px;
 }
+.schedule-block {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+.schedule-col { min-width: 180px; }
+.schedule-day {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--deepskyblue);
+  margin-bottom: 12px;
+}
+.schedule-times {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.schedule-times li {
+  font-size: 15px;
+  font-weight: 300;
+  opacity: 0.8;
+  padding: 6px 12px;
+  border-left: 2px solid rgba(255,255,255,0.1);
+}
+.schedule-divider {
+  width: 1px;
+  background: rgba(255,255,255,0.1);
+  align-self: stretch;
+}
 
 /* ─── 7V7 / PRODUCT ─── */
 .product-section { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
