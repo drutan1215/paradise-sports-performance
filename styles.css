@@ -882,11 +882,10 @@ footer {
   .reviews-grid { grid-template-columns: 1fr; }
   .header-actions { display: none; }
   .hero-content { padding: 80px 32px 120px; }
-  .hero-logo { height: 150px; }
+  .hero-logo { display: none; }
 }
 @media (max-width: 640px) {
   .hero-inner { flex-direction: column; gap: 32px; }
-  .hero-logo { display: none; }
   .services-grid { grid-template-columns: 1fr; }
   .staff-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
