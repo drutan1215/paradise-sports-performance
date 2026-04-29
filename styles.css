@@ -64,7 +64,7 @@ header {
   align-items: center;
   flex-shrink: 0;
 }
-.logo img { height: 50px; width: auto; display: block; }
+.logo img { height: 64px; width: auto; display: block; }
 
 nav { display: flex; align-items: center; gap: 2px; flex-wrap: wrap; justify-content: center; }
 nav a {
